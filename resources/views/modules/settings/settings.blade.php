@@ -46,8 +46,9 @@
 
                                 <div class="mb-0 mt-4 row justify-content-end">
                                     <div class="col-lg-10 col-md-9"> 
-                                        <!-- <button class="btn btn-primary" onClick="window.open('{{$ekmurl}}');">Connect</button> -->
-                                        <button class="btn btn-primary ekmauthorize">Connect</button>
+                                         
+                                        <!-- <button class="btn btn-primary ekmauthorize">Connect</button> -->
+                                        <a href="javascript:void(0)" class="btn btn-primary" id="add-new-post"> Connect</a>
                                     </div>
                                 </div>
                             </form>
@@ -91,6 +92,64 @@
     </div>
 </div>
 <!--app-content close-->
+
+<div class="modal fade" id="ajax-crud-modal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="postCrudModal"></h4>
+            <span  id="modelclose" style="cursor: pointer; color: red;"><i class="fa fa-times-circle" aria-hidden="true"></i></span> 
+        </div>
+        <div class="modal-body">
+            <form id="postForm" name="postForm" class="form-horizontal" enctype="multipart/form-data">
+               {{ csrf_field() }}
+               <input type="hidden" name="subs_id" id="subs_id">
+                <div class="form-group">
+                    <label for="service_name" class="col-sm-4 control-label">Integuration Name</label>
+                    <div class="col-sm-12">
+                      <input type="text" class="form-control" name="service_name" id="service_name" placeholder="Service Name" value="">
+                      <span class="text-danger" id="nameError"></span>   
+                    </div>
+                                 
+                </div>
+     
+                <div class="form-group">
+                    <label class="col-sm-6 control-label">Currency</label>
+                    <div class="col-sm-12">
+                        <select name="ekm_currency" class="form-control form-select" data-bs-placeholder="Select Month">
+                            <option label="Select Currency">Month</option>  
+                            @foreach($currencies as $showcurrencies)
+                                <option value="{{$showcurrencies["code"]}}"><span style="border:1px solid; padding: 3px;background-color: pink;">{{$showcurrencies["symbol"]}}</span> {{$showcurrencies["name"]}}</option> 
+                            @endforeach
+                        </select>
+                      <!-- <input type="text" class="form-control" name="sub_desc" id="sub_desc" placeholder="Subscription Description" aria-label="clarice@example.com" value="">
+                      <span class="text-danger" id="subdescError"></span> -->
+                    </div>
+                </div> 
+
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-success add_tb_row" id="btn-save" value="create">Install App</button>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer"> 
+            <div style="border: 1px solid #f4f4f4;  width: 100%; background-color:#f5f5f0;border-radius: 5px;">
+                <p style="padding:5px 5px 0px 5px;margin-bottom: 0px;">Connect your EKM store To OnePatch</p>
+            </div>
+            <div style="border: 1px solid #f4f4f4;  width: 100%; background-color:#f5f5f0;border-radius: 5px;">
+                <p style="padding:5px 5px 0px 5px;margin-bottom: 0px;">1. Make sure you are logged into EKM on another browser</p>
+            </div>
+            <div style="border: 1px solid #f4f4f4;  width: 100%; background-color:#f5f5f0;border-radius: 5px;">
+                <p style="padding:5px 5px 0px 5px;margin-bottom: 0px;">2. Enter a integuration name for your EKM account( This is help to indentify your service easier and can be anything you like.) </p>
+            </div>
+            <div style="border: 1px solid #f4f4f4;  width: 100%; background-color:#f5f5f0;border-radius: 5px;">
+                <p style="padding:5px 5px 0px 5px;margin-bottom: 0px;">3. Click install app </p>
+            </div>
+        </div>
+        
+    </div>
+  </div>
+</div>
 
 
 
@@ -162,6 +221,31 @@
 
     });
 
+</script>
+<script>
+
+    $(document).ready( function () {
+       $.ajaxSetup({
+            headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $('#add-new-post').click(function () {
+        $('#btn-save').val("create-post");
+        $('#post_id').val('');
+        $('#postForm').trigger("reset");
+        $('#postCrudModal').html("EKM Configuration");
+        $('#ajax-crud-modal').modal('show');
+        var url= 'public/asset/dist/img/avatar5.png';
+          $('#imagefields').attr('src',url);
+        });
+
+        $('#modelclose').click(function (a) {
+            $('#postForm').trigger("reset");
+            $('#ajax-crud-modal').modal('hide'); 
+        });
+    });
 </script>
 @endsection
 

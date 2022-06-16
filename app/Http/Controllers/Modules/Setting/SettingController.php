@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\ProductCatagory;
 use App\Models\Accountservice;
+use App\Models\Order;
 use Auth;
 use Config;
 
@@ -20,17 +21,18 @@ class SettingController extends Controller
      */
     public function settings()
     {
-    	// dd('DashboardController');
+        // dd('DashboardController');
 
         // $a  = Config::get('app.mykey');
 
         $client_id  = env('client_id'); 
+        $currencies = Order::getCurrencies(); 
 
-         
+        // dd($currencies);
         
-        $data['ekmurl'] = 'https://api.ekm.net/connect/authorize?client_id='. $client_id.'&scope=tempest.orders.read tempest.orders.write tempest.products.readtempest.products.write tempest.categories.read tempest.categories.write tempest.settings.orderstatuses.read tempest.settings.domains.readoffline_access&redirect_uri=https://opdev.onepatch.com/wooplugin/ekmauthreturn&prompt=login&state=onepatch&response_type=code';
+        $ekmurl = 'https://api.ekm.net/connect/authorize?client_id='. $client_id.'&scope=tempest.orders.read tempest.orders.write tempest.products.readtempest.products.write tempest.categories.read tempest.categories.write tempest.settings.orderstatuses.read tempest.settings.domains.readoffline_access&redirect_uri=https://opdev.onepatch.com/wooplugin/ekmauthreturn&prompt=login&state=onepatch&response_type=code';
 
-    	return view('modules.settings.settings')->with($data);
+        return view('modules.settings.settings',compact('currencies'));
     }
 
     /**
