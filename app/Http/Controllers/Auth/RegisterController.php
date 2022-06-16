@@ -105,7 +105,7 @@ class RegisterController extends Controller
         $maildata['email'] = $request->email;
 
         // dd(env('MAIL_FROM_ADDRESS'));
-        // Mail::send(new EmailVerifyMail($maildata));
+        Mail::send(new EmailVerifyMail($maildata));
 
         return redirect()->route('login')
       ->with('success', 'Thanks for signing up! A verification link has been sent to your email, Please verify email to active your account.');
