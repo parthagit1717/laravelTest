@@ -57,7 +57,7 @@
                 <!-- CONTAINER OPEN -->
                 <div class="col col-login mx-auto mt-7">
                     <div class="text-center">
-                        <img src="assets/images/brand/logo-white.png" class="header-brand-img" alt="" style="width: 80px;height: 100px;">
+                        <img src="{{asset('assets/images/brand/logo-2.png')}}" class="header-brand-img" alt="" style="width: 300px;height: 100px;">
                     </div> 
                 </div>
                 @if(session()->has('success'))

@@ -54,6 +54,8 @@ Route::group(['middleware' => ['auth']],function(){
         Route::get('ekm-queue-task-generate', [TaskProcesserController::class, 'ekmImportprocessqueuetaskgenerate'])->name('ekmImportprocessqueuetaskgenerate');
         Route::get('ekm-queue-task-process', [TaskProcesserController::class, 'ekmImportprocessqueuetask'])->name('ekmImportprocessqueuetask');
 
+         Route::get('ekm-product-import-request', [TaskProcesserController::class, 'EKMProductImportRequest'])->name('ekm_product_import_request');
+
 
     });
 
