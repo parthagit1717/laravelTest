@@ -27,9 +27,19 @@
             <div class="row">
                 <div class="col-md-12 col-xl-6">
                     <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">EKM Account</h4>
+                        <div class="card-header" style="border:none!important;"> 
+                            <div class="column">
+                                <img src="{{asset('assets/images/brand/ekm.png')}}" alt="ekm" style="width: 100px;height:40px; float: left;" class="">
+                            </div>
+                            <div class="column">
+                                <h4 class="card-title" style="font-size:22px; color:#b30047;font-weight: bold;">Account</h4>
+                            </div> 
                         </div>
+
+                        <div class="" style="padding:0px 20px; background-color:#e6fff2; border:1px solid #33ff99; border-radius: 5px;width: 90%;margin: 0px 27px;" >
+                            <h5 style="margin: 0px !important; padding: 6px 0px;"><i class="fa fa-check" aria-hidden="true" style="color:#00994d;"></i> Connected</h5> 
+                        </div> 
+                        <hr style="border-top: dotted 1px;">
                         <div class="card-body">
                             <form>
                                 <div class="">
@@ -57,9 +67,19 @@
                 </div>
                 <div class="col-md-12 col-xl-6">
                     <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Ebay Account</h4>
+                        <div class="card-header" style="border:none!important;"> 
+                            <div class="column">
+                                <img src="{{asset('assets/images/brand/ebay.png')}}" alt="ekm" style="width: 100px;height:40px; float: left;" class="">
+                            </div>
+                            <div class="column">
+                                <h4 class="card-title" style="font-size:22px; color:#b30047;font-weight: bold;">Account</h4>
+                            </div> 
                         </div>
+
+                        <div class="" style="padding:0px 20px; background-color:#e6fff2; border:1px solid #33ff99; border-radius: 5px;width:90%;margin: 0px 27px;" >
+                            <h5 style="margin: 0px !important; padding: 6px 0px;"><i class="fa fa-check" aria-hidden="true" style="color:#00994d;"></i> Connected</h5> 
+                        </div> 
+                        <hr style="border-top: dotted 1px;">
                         <div class="card-body">
                             <form class="form-horizontal">
                                 <!-- <div class=" row mb-4">
@@ -103,11 +123,11 @@
         <div class="modal-body">
             <form id="postForm" name="postForm" class="form-horizontal" enctype="multipart/form-data">
                {{ csrf_field() }}
-               <input type="hidden" name="subs_id" id="subs_id">
+                
                 <div class="form-group">
                     <label for="service_name" class="col-sm-4 control-label">Integuration Name</label>
                     <div class="col-sm-12">
-                      <input type="text" class="form-control" name="service_name" id="service_name" placeholder="Service Name" value="">
+                      <input type="text" class="form-control" name="integuration_name" id="integuration_name" placeholder="Integuration Name" value="" required>
                       <span class="text-danger" id="nameError"></span>   
                     </div>
                                  
@@ -116,14 +136,15 @@
                 <div class="form-group">
                     <label class="col-sm-6 control-label">Currency</label>
                     <div class="col-sm-12">
-                        <select name="ekm_currency" class="form-control form-select" data-bs-placeholder="Select Month">
-                            <option label="Select Currency">Month</option>  
+                        <select name="ekm_currency" class="form-control form-select" data-bs-placeholder="Select Currency" required>
+                            <option label="Select Currency"></option>  
                             @foreach($currencies as $showcurrencies)
-                                <option value="{{$showcurrencies["code"]}}"><span style="border:1px solid; padding: 3px;background-color: pink;">{{$showcurrencies["symbol"]}}</span> {{$showcurrencies["name"]}}</option> 
+                                <option value="{{$showcurrencies['code']}}"> {{$showcurrencies["name"]}}</option> 
                             @endforeach
                         </select>
                       <!-- <input type="text" class="form-control" name="sub_desc" id="sub_desc" placeholder="Subscription Description" aria-label="clarice@example.com" value="">
                       <span class="text-danger" id="subdescError"></span> -->
+                      <span class="text-danger" id="currenError"></span>
                     </div>
                 </div> 
 
@@ -247,6 +268,80 @@
         });
     });
 </script>
+
+<script>
+ 
+$(document).ready(function (e) {
+ 
+  $('#postForm').on('submit',(function(e) {
+
+  $('.savbtn').html('<i class="fa fa-spinner fa-spin"></i> Submitting...');
+   
+  $.ajaxSetup({
+   
+  headers: {
+   
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+   
+  }
+   
+  });
+   
+  e.preventDefault();
+   
+  var formData = new FormData(this);
+
+
+  $.ajax({
+   
+     type:'POST',
+   
+     url: "{{ route('saveekmdata') }}",
+   
+     data:formData,
+   
+     cache:false,
+   
+     contentType: false,
+   
+     processData: false,
+   
+          success: function (data) {   
+               console.log(data);
+                $('#postForm').trigger("reset");
+                $('#ajax-crud-modal').modal('hide');
+                var title = "Register", w = 900, h = 800;
+                var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : window.screenX;
+                var dualScreenTop = window.screenTop != undefined ? window.screenTop : window.screenY;
+
+                var width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+                var height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+
+                var systemZoom = width / window.screen.availWidth;
+                var left = (width - w) / 2 / systemZoom + dualScreenLeft
+                var top = (height - h) / 2 / systemZoom + dualScreenTop
+                var authWindow = window.open(data, title, 'scrollbars=yes, location=no, status=no, menubar=yes, width=' + w / systemZoom + ', height=' + h / systemZoom + ', top=' + top + ', left=' + left);
+                $(".fullpageloader").hide();
+
+
+          },
+          statusCode:{ 
+                500: function () {
+                    swal("Invalid API Key OR secret.", "", "error");
+                    $(".fullpageloader").hide();
+                }
+            },
+   
+      });
+
+      // Hide loder
+   
+  }));
+   
+});
+ 
+</script> 
+
 @endsection
 
 

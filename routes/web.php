@@ -39,7 +39,9 @@ Route::group(['middleware' => ['auth']],function(){
     	Route::get('settings', [SettingController::class, 'settings'])->name('settings');
 
         // EKM Connect....
+        Route::post('saveekmdata', [SettingController::class, 'saveekmdata'])->name('saveekmdata');
         Route::post('authekmservice', [SettingController::class, 'authekmservice'])->name('authekmservice');
+        Route::post('reconnectekmservice', [SettingController::class, 'reconnectEkmService'])->name('reconnectekmservice');
 
 
          
