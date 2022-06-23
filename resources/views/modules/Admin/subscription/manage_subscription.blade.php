@@ -8,6 +8,7 @@
    }
  </style>
  <style type="text/css">
+ 
     .paginate_button {
     background-color: blue;
     }
