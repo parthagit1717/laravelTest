@@ -28,11 +28,7 @@
                         class="side-menu__label">Dashboard</span></a>
             </li> 
              
-            <li class="slide">
-                <a class="side-menu__item {{Route::is('settings') ? 'active' : ''}}" data-bs-toggle="slide" href="{{route('settings')}}"><i
-                        class="side-menu__icon bi bi-gear"></i><span
-                        class="side-menu__label">Settings</span></a>
-            </li> 
+           
             @if(Auth::user()->id==1)
                 <li class="slide">
                     <a class="side-menu__item {{Route::is('manage_subs') ? 'active' : ''}}" data-bs-toggle="slide" href="{{route('manage_subs')}}"><i
@@ -56,6 +52,11 @@
                         class="side-menu__icon bi bi-credit-card"></i><span
                         class="side-menu__label">Subscription</span></a>
             </li>
+             <li class="slide">
+                <a class="side-menu__item {{Route::is('settings') ? 'active' : ''}}" data-bs-toggle="slide" href="{{route('settings')}}"><i
+                        class="side-menu__icon bi bi-gear"></i><span
+                        class="side-menu__label">Settings</span></a>
+            </li> 
             @endif
             <!-- <li class="sub-category">
                 <h3>UI Kit</h3>
