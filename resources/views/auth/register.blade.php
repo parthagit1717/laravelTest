@@ -56,10 +56,10 @@
             <div class="">
 
                 <!-- CONTAINER OPEN -->
-                <div class="col col-login mx-auto mt-7">
+                 <div class="col col-login mx-auto mt-7">
                     <div class="text-center">
-                        <img src="../assets/images/brand/logo-white.png" class="header-brand-img m-0" alt="" style="width: 80px;height: 100px;">
-                    </div>
+                        <img src="{{asset('assets/images/brand/logo-2.png')}}" class="header-brand-img" alt="" style="width: 300px;height: 100px;">
+                    </div> 
                 </div>
                 <div class="container-login100">
                     <div class="wrap-login100 p-6">
