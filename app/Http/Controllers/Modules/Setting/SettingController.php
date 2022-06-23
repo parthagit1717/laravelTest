@@ -23,9 +23,22 @@ class SettingController extends Controller
     {
         
         $client_id  = env('client_id'); 
-        $currencies = Order::getCurrencies();  
+        $currencies = Order::getCurrencies(); 
 
-        return view('modules.settings.settings',compact('currencies'));
+        $currnetUser = Auth::user();
+        $accountid = $currnetUser->account_id;
+
+        $getaccountservice = Accountservice::where('account_id',$accountid)->first();
+
+         
+        if(isset($getaccountservice))
+        {
+            $accountserviceid = $getaccountservice;
+        }
+
+         // dd($accountserviceid);
+
+        return view('modules.settings.settings',compact('currencies','accountserviceid'));
     }
 
     /**
@@ -37,7 +50,7 @@ class SettingController extends Controller
     {
 
         // $api_key = env('EKM_CLIENT_ID');
-        $api_key = env('client_id');
+        $api_key = env('EKM_CLIENT_ID');
         $currnetUser = Auth::user();
         // $dbdata = array();
         // $service_name = $req->get('service_name');
@@ -57,10 +70,12 @@ class SettingController extends Controller
 
     }
 
-    function reconnectEkmService(Request $req) {
+    function reconnectEkmService($serviceid) {
+        // dd($serviceid);
         $api_key = env('EKM_CLIENT_ID');
-        $id = $req->get('id');
+        $id = $serviceid;
         $scope = 'tempest.orders.read tempest.orders.write tempest.products.read tempest.products.write tempest.categories.read tempest.categories.write tempest.settings.orderstatuses.read tempest.settings.domains.read offline_access';
+        
         return 'https://api.ekm.net/connect/authorize?client_id='.$api_key.'&scope='.$scope.'&redirect_uri=https://opdev.onepatch.com/wooplugin/ekmauthreturn&prompt=login&state='.$id.'&response_type=code';
     }
 

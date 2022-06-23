@@ -41,6 +41,7 @@
                         </div> 
                         <hr style="border-top: dotted 1px;">
                         <div class="card-body">
+                            @if($accountserviceid->status==0)
                             <form>
                                 <div class="">
                                     <!-- <div class="form-group">
@@ -56,12 +57,15 @@
 
                                 <div class="mb-0 mt-4 row justify-content-end">
                                     <div class="col-lg-10 col-md-9"> 
-                                         
                                         <!-- <button class="btn btn-primary ekmauthorize">Connect</button> -->
                                         <a href="javascript:void(0)" class="btn btn-primary" id="add-new-post"> Connect</a>
                                     </div>
                                 </div>
                             </form>
+                            @else
+                            <a href="{{route('reconnectekmservice',['serviceid'=>$accountserviceid->id])}}" class="btn btn-danger">Logout to reconnect </a>
+                            @endif
+                            <!-- <a class="btn btn-primary ekmauthorize">Connect</a> -->
                         </div>
                     </div>
                 </div>
@@ -98,7 +102,7 @@
                                  
                                 <div class="mb-0 mt-4 row justify-content-end">
                                     <div class="col-lg-10 col-md-9"> 
-                                        <button class="btn btn-danger">Disconnect</button>
+                                        <button class="btn btn-primary">Connect</button>
                                     </div>
                                 </div>
                             </form>

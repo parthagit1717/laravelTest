@@ -27,7 +27,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('product-cat', [App\Http\Controllers\HomeController::class, 'productCat'])->name('product_cat');
 
 Route::get('user-verify/{email_vcode}/{id}', [RegisterController::class, 'verifyEmail'])->name('user.verify');
@@ -41,7 +41,7 @@ Route::group(['middleware' => ['auth']],function(){
         // EKM Connect....
         Route::post('saveekmdata', [SettingController::class, 'saveekmdata'])->name('saveekmdata');
         Route::post('authekmservice', [SettingController::class, 'authekmservice'])->name('authekmservice');
-        Route::post('reconnectekmservice', [SettingController::class, 'reconnectEkmService'])->name('reconnectekmservice');
+        Route::get('reconnectekmservice/{serviceid?}', [SettingController::class, 'reconnectEkmService'])->name('reconnectekmservice');
 
 
          

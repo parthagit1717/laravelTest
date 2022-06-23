@@ -17,7 +17,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/brand/favicon.ico" />
 
     <!-- TITLE -->
-    <title>OPconnect | @yield('title')</title>
+    <title>Onepatch Connect :: Ebay EKM | @yield('title')</title>
 
     @include('includes.links')
 
