@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Modules\Dashboard\DashboardController;
 use App\Http\Controllers\Modules\Setting\SettingController;
 use App\Http\Controllers\Modules\Admin\ManageUserController;
@@ -31,6 +33,12 @@ Auth::routes();
 // Route::get('product-cat', [App\Http\Controllers\HomeController::class, 'productCat'])->name('product_cat');
 
 Route::get('user-verify/{email_vcode}/{id}', [RegisterController::class, 'verifyEmail'])->name('user.verify');
+
+Route::get('password-reset-from', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('user.password.request');
+Route::post('password-email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('user.password.email');
+
+Route::get('password-reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('user.password.reset');
+Route::post('password-update', [ResetPasswordController::class, 'reset'])->name('user.password.update');
 
 Route::group(['middleware' => ['auth']],function(){
 

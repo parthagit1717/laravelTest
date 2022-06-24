@@ -17,7 +17,7 @@
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                        <li class="breadcrumb-item active" aria-current="page">@if($user->user_type==1) Admin Profile @else User Profile @endif</li>
                     </ol>
                 </div>
             </div>

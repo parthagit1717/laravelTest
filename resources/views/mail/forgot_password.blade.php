@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>ONEPATCH CONNECT : EKM EBAY|Email Verify</title>
+      <title>ONEPATCH CONNECT : EKM EBAY|Forgot Password</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -97,22 +97,19 @@
             <h1 style="font-family:Arial; font-size:16px; font-weight:500; /*color:#8ccd56;*/ margin:5px 0 12px 0;">Dear {{@$data['name']}},</h1>
             <div style="display:block; overflow:hidden; width:100%;">
                <p style="font-family:Arial; font-size:14px; font-weight:500; color:#000;margin-left: 5px;">
-                  We're excited to have you get started. First, you need to confirm your account. Just press the button below.
+                  It seems that you’ve forgotten your password.
                </p>  
                <div style="display:block;overflow:hidden; width:100%; text-align:center; margin: 0px 0px 10px 0px;">
 
-                  <a href="{{ route('user.verify', [@$data['email_vcode'],md5(@$data['id'])]) }}" style="font-family:Arial; border-radius:17px;font-size:15px; font-weight:500; color:#FFF; display:inline-block; padding: 7px 12px; background-color: #a4508b;background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%); text-decoration:none;">Verify Email</a>
+                  <a href="{{@$data['link']}}" style="font-family:Arial; border-radius:17px;font-size:15px; font-weight:500; color:#FFF; display:inline-block; padding: 7px 12px; background-color: #a4508b;background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%); text-decoration:none;">Reset Password</a>
                </div>
                   <p style="font-family:Arial; font-size:14px; font-weight:500; color:#000;margin-left: 5px;">
-                    If that doesn't work, copy and paste the following link in your browser:
-                  </p>  
-                <div style="display:block;overflow:hidden; width:100%; margin: 0px 0px 10px 0px;"> 
-                  <p style="font-family:Arial; font-size:14px; font-weight:500; color:#ff944d;margin-left: 5px;">{{ route('user.verify', [@$data['email_vcode'],md5(@$data['id'])]) }}</p>
-                </div>                
+                    If you did not make this request, just ignore this email. Otherwise please click the button above to reset your password.
+                  </p>           
             </div> 
             
             <p style="font-family:Arial; font-size:14px; font-weight:500; color:#363839;margin: 0px 0px 10px 0px; margin-top: 20px;">Thank You,</p>
-            <p style=" font-family:Arial; font-size:14px; font-weight:500; color:#363839;margin: 0px 0px 10px 0px;">Team Onepatch Connect :: Ebay EKM.</p>
+            <p style=" font-family:Arial; font-size:14px; font-weight:500; color:#363839;margin: 0px 0px 10px 0px;">Team ONEPATCH CONNECT : EKM EBAY.</p>
             <!-- <p style=" font-family:Arial; font-size:14px; font-weight:500; color:#363839;margin: 0px 0px 10px 0px;">Contact: info@OpwebTracker.com</p> -->
          </div>
 

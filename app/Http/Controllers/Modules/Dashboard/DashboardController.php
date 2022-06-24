@@ -17,6 +17,8 @@ class DashboardController extends Controller
     public function index()
     {
     	// dd('DashboardController');
-    	return view('modules.dashboard.dashboard');
+        $user = User::where('user_type',3)->get();
+
+    	return view('modules.dashboard.dashboard',compact('user'));
     }
 }

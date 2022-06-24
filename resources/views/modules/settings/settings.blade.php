@@ -36,9 +36,9 @@
                             </div> 
                         </div>
 
-                        <div class="" style="padding:0px 20px; background-color:#e6fff2; border:1px solid #33ff99; border-radius: 5px;width: 90%;margin: 0px 27px;" >
+                       <!--  <div class="" style="padding:0px 20px; background-color:#e6fff2; border:1px solid #33ff99; border-radius: 5px;width: 90%;margin: 0px 27px;" >
                             <h5 style="margin: 0px !important; padding: 6px 0px;"><i class="fa fa-check" aria-hidden="true" style="color:#00994d;"></i> Connected</h5> 
-                        </div> 
+                        </div> --> 
                         <hr style="border-top: dotted 1px;">
                         <div class="card-body">
                             @if($accountserviceid->status==0)
@@ -63,8 +63,14 @@
                                 </div>
                             </form>
                             @else
-                            <a href="{{route('reconnectekmservice',['serviceid'=>$accountserviceid->id])}}" class="btn btn-danger">Logout to reconnect </a>
+                            <div class="" style="padding:0px 20px; background-color:#e6fff2; border:1px solid #33ff99; border-radius: 5px;width: 90%;margin: 0px 27px;" >
+                                <h5 style="margin: 0px !important; padding: 6px 0px;"><i class="fa fa-check" aria-hidden="true" style="color:#00994d;"></i> Connected</h5> 
+                            </div> 
                             @endif
+                            <div>
+                                <a href="javascript:void(0)" class="btn btn-success mt-4">Import product </a>
+                            </div>
+                            
                             <!-- <a class="btn btn-primary ekmauthorize">Connect</a> -->
                         </div>
                     </div>
@@ -80,9 +86,9 @@
                             </div> 
                         </div>
 
-                        <div class="" style="padding:0px 20px; background-color:#e6fff2; border:1px solid #33ff99; border-radius: 5px;width:90%;margin: 0px 27px;" >
+                        <!-- <div class="" style="padding:0px 20px; background-color:#e6fff2; border:1px solid #33ff99; border-radius: 5px;width:90%;margin: 0px 27px;" >
                             <h5 style="margin: 0px !important; padding: 6px 0px;"><i class="fa fa-check" aria-hidden="true" style="color:#00994d;"></i> Connected</h5> 
-                        </div> 
+                        </div> --> 
                         <hr style="border-top: dotted 1px;">
                         <div class="card-body">
                             <form class="form-horizontal">
@@ -102,7 +108,7 @@
                                  
                                 <div class="mb-0 mt-4 row justify-content-end">
                                     <div class="col-lg-10 col-md-9"> 
-                                        <button class="btn btn-primary">Connect</button>
+                                        <a class="btn btn-primary">Connect</a>
                                     </div>
                                 </div>
                             </form>

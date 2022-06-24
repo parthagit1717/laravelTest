@@ -1,11 +1,6 @@
 <?php
 
-/**
- * Created by Onepatch.
- * User: Onepatch Team
- * Date: 23/02/2020
- */
-
+ 
 namespace LMS\Libraries;
 
 use Illuminate\Support\Facades\Auth;

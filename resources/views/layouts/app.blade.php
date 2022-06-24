@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Onepatch Connect :: Ebay EKM') }}</title>
+    <title>{{ config('app.name', 'ONEPATCH CONNECT : EKM EBAY') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

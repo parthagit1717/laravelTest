@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SubscriptionMail extends Mailable
+class ForgotPasswordMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -30,13 +30,13 @@ class SubscriptionMail extends Mailable
     public function build()
     {
         // return $this->view('view.name');
-
         $data['data'] =  $this->request;
+
         // dd($data);
 
-        return $this->view('mail.subscription_mail', $data)
-                    ->to($this->request['email']) 
-                    ->subject('ONEPATCH CONNECT : EKM EBAY Subscription Mail')
+        return $this->view('mail.forgot_password', $data)
+                    ->to($this->request['email'])
+                    ->subject('ONEPATCH CONNECT : EKM EBAY Forgot Password')
                     ->from('onepatchoffice@gmail.com',env('APP_NAME'));
     }
 }

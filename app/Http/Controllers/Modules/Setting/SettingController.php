@@ -22,7 +22,7 @@ class SettingController extends Controller
     public function settings()
     {
         
-        $client_id  = env('client_id'); 
+         
         $currencies = Order::getCurrencies(); 
 
         $currnetUser = Auth::user();

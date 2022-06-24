@@ -31,12 +31,12 @@ class EmailVerifyMail extends Mailable
     {
         // return $this->view('view.name');
 
-         $data['data'] =  $this->request;
+        $data['data'] =  $this->request;
         // dd($data);
           
         return $this->view('mail.emailverify', $data)
                     ->to($this->request['email'])
-                    ->subject('OPConnect Email Verification')
+                    ->subject('ONEPATCH CONNECT : EKM EBAY Email Verification')
                     ->from('onepatchoffice@gmail.com',env('APP_NAME'));
     }
 }

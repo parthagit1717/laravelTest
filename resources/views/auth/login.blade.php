@@ -7,15 +7,14 @@
     <meta charset="UTF-8">
     <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Onepatch Connect :: Ebay EKM">
-    <meta name="author" content="Spruko Technologies Private Limited">
+    <meta name="description" content="Onepatch Connect :: Ebay EKM"> 
     <meta name="keywords" content="admin,admin dashboard,admin panel,admin template,bootstrap,clean,dashboard,flat,jquery,modern,responsive,premium admin templates,responsive admin,ui,ui kit.">
 
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/brand/favicon.ico')}}" />
 
     <!-- TITLE -->
-    <title>Onepatch Connect :: Ebay EKM | Login</title>
+    <title>ONEPATCH CONNECT : EKM EBAY | Login</title>
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -35,6 +34,9 @@
         .wrap-login100{
             width: 400px;
           }
+          body {
+          background-image:url({{url('assets/images/brand/backgound.png')}})
+        }
     </style>
 
 </head>
@@ -62,9 +64,9 @@
                 </div>
                 @if(session()->has('success'))
                     <div class="col-lg-12 col-md-6 center" style="display: flex; justify-content: center; margin-top: 10px;">
-                        <p class="alert alert-success col-lg-5" id="success-alert" style="font-size: 16px; background-color: #70db70; color: white;"><span class="badge badge-pill badge-success" style="background-color:  #1f7a1f;"> Success !</span>
+                        <p class="alert alert-success col-lg-10" id="success-alert" style="font-size: 16px; background-color: #70db70; color: white;"><span class="badge badge-pill badge-success" style="background-color:  #1f7a1f;"> Success !</span>
                         <span id="msg">{{ session()->get('success') }} </span>
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close" style="float: right;">×</a>
                         </p>
                     </div>
                  @endif
@@ -74,9 +76,9 @@
                 @if(session()->has('error')) 
                 <div class="col-lg-12 col-md-6 center" style="display: flex; justify-content: center; margin-top: 10px;">
                     <p class="alert alert-danger col-lg-5" id="danger-alert" style="font-size: 16px; background-color:#ff9999"><span class="badge badge-pill badge-danger" style="background-color: #cc0000"> Error !</span>
-                        <span id="msg">
+                        <span id="msg" >
                         {{ session()->get('error') }}</span>
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close" style="float: right;">×</a>
                     </p> 
                 </div>
                 @endif
@@ -119,7 +121,7 @@
                                         </div>
 
                                         <div class="text-end pt-4">
-                                            <p class="mb-0"><a href="forgot-password.html" class="text-primary ms-1">Forgot Password?</a></p>
+                                            <p class="mb-0"><a href="{{route('user.password.request')}}" class="text-primary ms-1">Forgot Password?</a></p>
                                         </div>
                                         <div class="container-login100-form-btn">
                                             <button type="submit" class="login100-form-btn btn-primary">Login</button>

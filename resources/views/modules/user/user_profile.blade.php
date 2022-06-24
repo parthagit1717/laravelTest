@@ -17,7 +17,7 @@
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                        <li class="breadcrumb-item active" aria-current="page">@if($user->user_type==1) Admin Profile @else User Profile @endif</li>
                     </ol>
                 </div>
             </div>
@@ -49,20 +49,22 @@
                                                 <div class="col-sm-6">
                                                   <p><strong>Your Name:-</strong> {{ $user->name }} </p>
                                                   <p><strong>Your Email:-</strong> {{ $user->email }} </p>
-                                                  <p><strong>Subscription Plan:-</strong> 
-                                                    @if(@$user->subs_id != null)
-                                                    {{ $user->getUserSubscription->sub_title }} 
-                                                    @else 
-                                                      <span style="color:#e600ac;">You have no subscription plan.</span>
+                                                  @if($user->user_type!=1)
+                                                    <p><strong>Subscription Plan:-</strong> 
+                                                      @if(@$user->subs_id != null)
+                                                      {{ $user->getUserSubscription->sub_title }} 
+                                                      @else 
+                                                        <span style="color:#e600ac;">You have no subscription plan.</span>
+                                                      @endif
+                                                    </p>
+                                                    @if(@$user->subs_id && @$user->subs_end != null)
+                                                      <p><strong>Subscription Plan End On :-</strong> {{ \Carbon\Carbon::parse($user->subs_end)->format('d-M-Y')}} </p>
                                                     @endif
-                                                  </p>
-                                                  @if(@$user->subs_id && @$user->subs_end != null)
-                                                    <p><strong>Subscription Plan End On :-</strong> {{ \Carbon\Carbon::parse($user->subs_end)->format('d-M-Y')}} </p>
                                                   @endif
                                                 </div>
 
                                                 <div class="col-sm-6"> 
-                                                  <span> <strong> Profile Image :- </strong></span><img src="{{$user->image ? asset('storage/images/user_image/'.$user->image) : asset('public/asset/dist/img/avatar5.png') }}" class="brround" alt="User" />
+                                                  <span> <strong> Profile Image :- </strong></span><img src="{{$user->image ? asset('storage/images/user_image/'.$user->image) : asset('assets/images/users/7.png') }}" class="brround" alt="User" />
                                                 </div>
 
                                               </div> 

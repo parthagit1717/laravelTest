@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>OPConnect | Subscription Mail</title>
+      <title>ONEPATCH CONNECT : EKM EBAY | Subscription Mail</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
        
       <style type="text/css">
@@ -99,10 +99,10 @@
    <body>
 
       <div style="max-width:720px; margin:0 auto;">
-         <div style="/*width:620px;*/background: #ffccff; /*padding: 0px 10px;*/ border:1px solid #dcd7d7;">
+        <div style="/*width:620px;*/background-color: #a4508b;background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%); /*padding: 0px 10px;*/ border:1px solid #dcd7d7; height:75px;">
             <div style="float: none; text-align: center; margin-top: 0px; background:url('{{ URL::to('#') }}') repeat center center">              
-              <!--  <img src="https://onepatch.com/wp-content/uploads/2021/03/ONEPATCH_LOGO_2020_RESIZE.png" width="120" alt=""> -->
-              <p>OpWebTracker</p>
+              <img src="http://54.78.239.1:8084/assets/images/brand/logo-2.png" style="margin-top:margin-top:15px;" width="120"height="40px" alt="">
+             <!--  <p>Onepatch Connect :: Ebay EKM</p> -->
             </div>
             <div style="float: right;   text-align: center; margin-top: 0px;">
               <p style="margin-right: 5px;"> {{@$data['today']}}</p>
@@ -114,7 +114,7 @@
             <h1 style="font-family:Arial; font-size:16px; font-weight:500; /*color:#8ccd56;*/ margin:5px 0 12px 0;">Dear {{@$data['name']}},</h1>
             <div style="display:block; overflow:hidden; width:100%; margin-left: 25px;  margin-bottom: 10px;">
               <p style="font-family:Arial; font-size:14px; font-weight:500; color:#000;">
-                Welcome to OP Web Tracker , You have successfully subscribe <span style="color:#ff5500">{{@$data['subname']}}</span>.<br> <a href="{{@$data['receipt_url']}}" style="text-decoration: none;" target="_blank">View receipt </a>
+                Welcome to Onepatch Connect :: Ebay EKM , You have successfully subscribe <span style="color:#ff5500">{{@$data['subname']}}</span>.<br> <a href="{{@$data['receipt_url']}}" style="text-decoration: none;" target="_blank">View receipt </a>
               </p> 
 
               <div style="width:40%"> 
@@ -152,14 +152,14 @@
             </div> 
             
             
-            <p style=" font-family:Arial; font-size:14px; font-weight:500; color:#363839;margin: 0px 0px 10px 0px;">Thank You,</p>
-            <p style=" font-family:Arial; font-size:14px; font-weight:500; color:#363839;margin: 0px 0px 10px 0px;">Team OP Web Tracker.</p>
+            <p style=" font-family:Arial; font-size:14px; font-weight:500; color:#363839;margin: 0px 0px 10px 0px;">Cheers,</p>
+            <p style=" font-family:Arial; font-size:14px; font-weight:500; color:#363839;margin: 0px 0px 10px 0px;">Team Onepatch Connect :: Ebay EKM.</p>
              
          </div>
-         <div style="/*width:620px;*/background:#ffccff; /*padding: 0px 10px;*/ border:1px solid #dcd7d7;">
+         <div style="/*width:620px;*/background-color: #a4508b;background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%); /*padding: 0px 10px;*/ border:1px solid #dcd7d7;color: white;">
             <div id="sub-footer">
                 <div class="row footer_row">
-                    <div class="column">OPConnect© 2021. All Rights Reserved.</div>
+                    <div class="column">Onepatch Connect :: Ebay EKMs© 2021. All Rights Reserved.</div>
                     <div class="column">info@OPConnect.com</div>
                     <div class="column">22, Lorem ipsum dolor, consectetur adipiscing.<br>Mob:- (541) 754-3010</div>
                 </div>
