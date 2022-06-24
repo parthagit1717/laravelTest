@@ -24,6 +24,7 @@ use App\Http\Controllers\Modules\TaskProcesser\TaskProcesserController;
 */
 
 Route::get('/', function () {
+     
     return view('auth.login');
 });
 

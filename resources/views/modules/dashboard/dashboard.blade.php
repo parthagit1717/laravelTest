@@ -27,6 +27,80 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 ">
                     <div class="row">
+                        @if(Auth::user()->id==1)
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                                <div class="card overflow-hidden">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div class="mt-2">
+                                                <h6 class="">Total Users</h6>
+                                                <h2 class="mb-0 number-font">{{ $user->count() }}</h2>
+                                            </div>
+                                            <div class="ms-auto">
+                                                <div class="chart-wrapper mt-1">
+                                                    <canvas id="saleschart"
+                                                        class="h-8 w-9 chart-dropshadow"></canvas>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                                <div class="card overflow-hidden">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div class="mt-2">
+                                               <h6 class="">Unverified Users</h6>
+                                                <h2 class="mb-0 number-font">{{ $unveriuser->count() }}</h2>
+                                            </div>
+                                            <div class="ms-auto">
+                                                <div class="chart-wrapper mt-1">
+                                                    <canvas id="saleschart"
+                                                        class="h-8 w-9 chart-dropshadow"></canvas>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                                <div class="card overflow-hidden">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div class="mt-2">
+                                                <h6 class="">Active Users</h6>
+                                                <h2 class="mb-0 number-font">{{ $activeuser->count() }}</h2>
+                                            </div>
+                                            <div class="ms-auto">
+                                                <div class="chart-wrapper mt-1">
+                                                    <canvas id="saleschart"
+                                                        class="h-8 w-9 chart-dropshadow"></canvas>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                                <div class="card overflow-hidden">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div class="mt-2">
+                                                <h6 class="">Inactive Users</h6>
+                                                <h2 class="mb-0 number-font">{{ $inactiveuser->count() }}</h2>
+                                            </div>
+                                            <div class="ms-auto">
+                                                <div class="chart-wrapper mt-1">
+                                                    <canvas id="saleschart"
+                                                        class="h-8 w-9 chart-dropshadow"></canvas>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div> 
+                        @else
                         <div class="col-lg-12 col-md-12 col-sm-12">
                             <div class="card overflow-hidden">
                                 <div class="card-body">
@@ -53,7 +127,8 @@
                                 </div>
                             </div>
                         </div>
-                         
+                        @endif
+
                     </div>
                 </div>
             </div>

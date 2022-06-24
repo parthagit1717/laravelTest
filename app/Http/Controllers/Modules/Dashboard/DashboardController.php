@@ -18,7 +18,9 @@ class DashboardController extends Controller
     {
     	// dd('DashboardController');
         $user = User::where('user_type',3)->get();
-
-    	return view('modules.dashboard.dashboard',compact('user'));
+        $unveriuser = User::where('user_type',3)->where('status',0)->get();
+        $activeuser = User::where('user_type',3)->where('status',1)->get();
+        $inactiveuser = User::where('user_type',3)->where('status',2)->get();
+    	return view('modules.dashboard.dashboard',compact('user','unveriuser','activeuser','inactiveuser'));
     }
 }

@@ -65,7 +65,7 @@ class ForgotPasswordController extends Controller
         $data['email'] = $user->email;
         $data['mailBody'] = 'forgotpassword';
         Mail::send(new ForgotPasswordMail($data));
-        return redirect()->back()->with('success','Password reset link send your email.');
+        return redirect()->back()->with('success','Password reset link send to your email address.');
     }
 
     /**

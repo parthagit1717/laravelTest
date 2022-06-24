@@ -63,14 +63,14 @@
                     </div> 
                 </div>
                 @if(session()->has('success'))
-                    <div class="col-lg-6 col-md-6 center" style="display: flex; justify-content: center; margin-top: 10px;">
+                    <div class="" style="display: flex; justify-content: center;margin: auto; width: 50%;padding: 10px;">
                         <p class="alert alert-success col-lg-10" id="success-alert" style="font-size: 16px; background-color: #70db70; color: white;"><span class="badge badge-pill badge-success" style="background-color:  #1f7a1f;"> Success !</span>
                         <span id="msg">{{ session()->get('success') }} </span>
                         <a href="#" class="close" data-dismiss="alert" aria-label="close" style="float: right;">×</a>
                         </p>
                     </div>
                  @endif
-                
+ 
                
 
                 @if(session()->has('error')) 
