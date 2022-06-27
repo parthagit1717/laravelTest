@@ -11,6 +11,9 @@
     .paginate_button {
     background-color: blue;
     }
+    #laravel_datatable_length{
+    font-size: 17px !important;
+    }
  </style>
 @endsection
  
@@ -28,7 +31,7 @@
                 <h1 class="page-title">User Details</h1>
                 <div>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">User Details</li>
                     </ol>
                 </div>
@@ -51,9 +54,10 @@
                           </div>
                         </div>
                         <div class="card-body">
-                            <p class="alert alert-success" id="msgdiv" style="display: none; background:#00997a;font-size: 16px;"><span class="badge badge-pill badge-secondary mr-2"> Success ! </span><span id="msg"></span><a href="#" class="close" data-dismiss="alert" aria-label="close">×</a></p>
+                            
+                            <p class="alert alert-success" id="msgdiv" style="display: none; font-size: 16px;"><span class="badge badge-pill badge-secondary mr-2" style="background-color: #00e673"> Success ! </span> <span id="msg" style="color:black;"></span><a href="#" class="close" data-dismiss="alert" aria-label="close" style="float: right">×</a></p>
 
-                            <p class="alert alert-primary" id="msgdiv2" style="display: none; background:#007399; font-size: 16px;"><span class="badge badge-pill badge-secondary mr-2"> Status ! </span><span id="msg2"></span><a href="#" class="close" data-dismiss="alert" aria-label="close">×</a></p>
+                             <p class="alert alert-primary" id="msgdiv2" style="display: none; background:#ffb3d9; font-size: 16px;"><span class="badge badge-pill badge-secondary mr-2" style="background-color: #cc0066;"> Status ! </span> <span id="msg2" style="color: black;"></span><a href="#" class="close" data-dismiss="alert" aria-label="close" style="float: right">×</a></p>
 
                             <!-- For User only.... -->  
                             <table class="table table-striped table-bordered dt-responsive nowrap" style="width:100%; font-size: 15px;" id="laravel_datatable">
@@ -228,7 +232,7 @@ $(document).ready( function () {
         var url= 'assets/images/users/7.png';
       }
       else{
-        var url= 'storage/app/public/images/user_image/'+data.image;
+        var url= 'storage/images/user_image/'+data.image;
       }
       
       $('#imagefields').attr('src',url);

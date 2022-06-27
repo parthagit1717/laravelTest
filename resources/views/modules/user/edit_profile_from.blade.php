@@ -16,7 +16,7 @@
                 <h1 class="page-title">Profile</h1>
                 <div>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">@if($user->user_type==1) Admin Profile @else User Profile @endif</li>
                     </ol>
                 </div>
@@ -35,12 +35,12 @@
                                         <input type="hidden" name="user_id" value="{{$user->id}}" id="user_id">
                                         <div class="card-body">
                                             <div class="text-center chat-image mb-5">
-                                                <div class="avatar avatar-xxl chat-profile mb-3 brround">
-                                                     @if(@$user->image)
-                                                        <img src="{{ asset('storage/images/user_image/'.@$user->image) }}" class="brround">
-                                                      @else
-                                                        <img src="{{asset('assets/images/users/7.png')}}" alt="5 Terre" class="brround">
-                                                    @endif
+                                                <div class="mb-3 brround">
+                                                    @if(@$user->image)
+                                                        <img src="{{ asset('storage/images/user_image/'.@$user->image) }}" style="width: 100px;height: 120px;  margin-top: 10px;"   class="brround">
+                                                    @else
+                                                        <img src="{{asset('assets/images/users/7.png')}}" alt="5 Terre" style="width: 100px;height: 120px; margin-top: 10px;" class="brround">
+                                                    @endif   
                                                    <!--  <img alt="avatar" src="assets/images/users/7.png" class="brround"> --> 
                                                 </div>
                                                 <div class="main-chat-msg-name"> 
@@ -148,14 +148,17 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="zipcodeLabel">Profile Image</label>
-                                                <div class="col-sm-9">
-                                                    <input type="file" name="image" onchange="previewImage(event)" class="mb-3">
-
+                                                <div class="col-sm-" style="margin: auto;">
+                                                    <input type="file" name="image" onchange="previewImage(event)" class="mb-3"> 
                                                     @if(@$user->image)
-                                                        <img src="{{ asset('storage/images/user_image/'.@$user->image) }}" style="width: 100px;height: 120px;  margin-top: 10px;" id="imagefields" class="brround">
-                                                    @else
-                                                        <img src="{{asset('assets/images/users/7.png')}}" alt="5 Terre" style="width: 100px;height: 120px; margin-top: 10px;" id="imagefields" class="brround">
-                                                    @endif                                                     
+                                                        <img src="{{ asset('storage/images/user_image/'.@$user->image) }}" style="width: 100px;height: 120px;  margin-top: 10px;" id="imagefields" class="brround"> 
+                                                        <span style="margin-left: -12px; font-size: 30px;"><a href="javascript::void(0)" title='Click to remove profile image' onclick="romove()"><i class="fa fa-times-circle-o" aria-hidden="true" style="color: red;"></i></a></span>
+                                                    @else 
+                                                        <img src="{{asset('assets/images/users/7.png')}}" alt="5 Terre" style="width: 100px;height: 120px; margin-top: 10px;" id="imagefields" class="brround"> 
+                                                        <!-- <a href="" class="btn btn-info " style="margin-left: 10px;">Remove image</a> -->
+
+                                                    @endif  
+
                                                 </div> 
                                                 @if($errors->has('image'))
                                                   <span class="invalide-feedback" role='alert' >
@@ -183,6 +186,25 @@
 <!--app-content close--> 
 
 @endsection
+
+<script type="text/javascript">
+    function romove() {
+        swal({
+        title: "Are you sure you want to remove this profile image ?", 
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+          .then((willDelete) => {
+            if (willDelete) {
+             window.location.href = "{{route('remove_profile_image',['userid'=>$user->id])}}";
+            } else {
+             return false;
+            }
+          });
+            
+        }
+    </script>
 
 
 

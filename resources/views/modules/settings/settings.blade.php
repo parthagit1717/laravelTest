@@ -16,13 +16,13 @@
                 <h1 class="page-title">Settings</h1>
                 <div>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Settings</li>
                     </ol>
                 </div>
             </div>
             <!-- PAGE-HEADER END -->
-
+            @include('includes.message')
             <!-- Row -->
             <div class="row">
                 <div class="col-md-12 col-xl-6">
@@ -41,7 +41,8 @@
                         </div> --> 
                         <hr style="border-top: dotted 1px;">
                         <div class="card-body">
-                            @if($accountserviceid->status==0)
+
+                            @if(@$accountserviceid->status==0 || $accountserviceid =='')
                             <form>
                                 <div class="">
                                     <!-- <div class="form-group">
@@ -66,10 +67,10 @@
                             <div class="" style="padding:0px 20px; background-color:#e6fff2; border:1px solid #33ff99; border-radius: 5px;width: 90%;margin: 0px 27px;" >
                                 <h5 style="margin: 0px !important; padding: 6px 0px;"><i class="fa fa-check" aria-hidden="true" style="color:#00994d;"></i> Connected</h5> 
                             </div> 
-                            @endif
                             <div>
-                                <a href="javascript:void(0)" class="btn btn-success mt-4">Import product </a>
+                                <a href="{{route('ekm_product_import_request',['config'=>@$accountserviceid->id])}}" class="btn btn-success mt-4">Import product </a>
                             </div>
+                            @endif 
                             
                             <!-- <a class="btn btn-primary ekmauthorize">Connect</a> -->
                         </div>

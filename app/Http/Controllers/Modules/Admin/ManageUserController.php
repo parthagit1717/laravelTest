@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use App\Models\UserAccount;
 use Auth;
 use Redirect,Response;
 use Mail;
@@ -100,7 +101,7 @@ class ManageUserController extends Controller
 
                       <a href='javascript:void(0)' data-toggle='tooltip' data-id=".$post->id." title='Edit' class='edit btn btn-success edit-post' style=' padding:4px;'> Edit <i class='bi bi-pencil-square'></i></a> 
 
-                      <a href='javascript:void(0)' onclick='inactive(".$post->id.")' title='Click To Inactive User' id='inactive' class='edit btn btn-danger' style='padding:4px;'>Inactive <i class='bi bi-hand-thumbs-down'></i></a>  &emsp;";
+                      <a href='javascript:void(0)' onclick='inactive(".$post->id.")' title='Click To Inactive User' id='inactive' class='edit btn btn-success' style='padding:4px;'>Active <i class='bi bi bi-hand-thumbs-up'></i></a>  &emsp;";
                 }
                 else
                 {
@@ -108,7 +109,7 @@ class ManageUserController extends Controller
 
                      <a href='javascript:void(0)' data-toggle='tooltip' data-id=".$post->id." title='Edit' class='edit btn btn-success edit-post' '> Edit <i class='bi bi-pencil-square'></i></a>
 
-                    <a href='javascript:void(0)' onclick='active(".$post->id.")' title='Click To Active User' id='active' class='edit btn btn-success'> Active <i class='bi bi bi-hand-thumbs-up'></i></a>&emsp;";   
+                    <a href='javascript:void(0)' onclick='active(".$post->id.")' title='Click To Active User' id='active' class='edit btn btn-danger'> Inactive <i class='bi bi-hand-thumbs-down'></i></a>&emsp;";   
                 }
                 $data[] = $nestedData;
 
@@ -206,10 +207,16 @@ class ManageUserController extends Controller
                 $input['image'] =  $filename;
             }
 
+            $Userdata['name'] = $request->name;
+            $Userdata['email'] = $request->email;
+
+            $useraccount = UserAccount::create($Userdata);
+
+            $input['account_id'] = $useraccount->id;
             $user = User::create($input); 
 
             // dd($user);
-
+            $accountdata[] = 
             // $inputs['user_id'] = $user->id;
             // $inputs['role_id'] = 2; 
             // $role = RoleUser::create($inputs);
@@ -305,7 +312,7 @@ class ManageUserController extends Controller
         //     }
         // }
          
-        return view('modules.Admin.user.user_details')->with(@$data);
+        return view('modules.admin.user.user_details')->with(@$data);
         
     }
 }

@@ -16,7 +16,7 @@
                 <h1 class="page-title">Profile</h1>
                 <div>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">@if($user->user_type==1) Admin Profile @else User Profile @endif</li>
                     </ol>
                 </div>
@@ -37,7 +37,7 @@
                                           <div class="card-header"> 
                                             <div class="row" style="width: 100%;">
                                               <div class="col-sm-6">
-                                                <h3>Welcome <span>{{ $user->name }}</span></h3>
+                                                <p><strong> Welcome </strong><span style="font-size: font-size: 15px !important;">{{ $user->name }}</span></p>
                                               </div>
                                               <div class="col-sm-6">
                                                 <a href="{{ route('edit_profile') }}" class="btn btn-success" id="add-new-post">Edit Profile <i class="bi bi-pencil-square"></i></a> 
@@ -64,7 +64,7 @@
                                                 </div>
 
                                                 <div class="col-sm-6"> 
-                                                  <span> <strong> Profile Image :- </strong></span><img src="{{$user->image ? asset('storage/images/user_image/'.$user->image) : asset('assets/images/users/7.png') }}" class="brround" alt="User" />
+                                                  <span> <strong> Profile Image :- </strong></span><img src="{{$user->image ? asset('storage/images/user_image/'.$user->image) : asset('assets/images/users/7.png') }}" class="brround" alt="User" style="max-width: 24% !important;"/>
                                                 </div>
 
                                               </div> 

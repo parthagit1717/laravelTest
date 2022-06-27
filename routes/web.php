@@ -59,13 +59,14 @@ Route::group(['middleware' => ['auth']],function(){
     	Route::get('edit-profile', [EditProfileController::class, 'editProfile'])->name('edit_profile');
     	Route::post('update-profile', [EditProfileController::class, 'updateProfile'])->name('update_profile');
     	Route::post('update-pasword', [EditProfileController::class, 'updatePassword'])->name('update_pasword');
+        Route::get('remove-profile-image/{userid?}', [EditProfileController::class, 'removeProfileImage'])->name('remove_profile_image');
 
         // Task Processer Routes...
 
         Route::get('ekm-queue-task-generate', [TaskProcesserController::class, 'ekmImportprocessqueuetaskgenerate'])->name('ekmImportprocessqueuetaskgenerate');
         Route::get('ekm-queue-task-process', [TaskProcesserController::class, 'ekmImportprocessqueuetask'])->name('ekmImportprocessqueuetask');
 
-         Route::get('ekm-product-import-request', [TaskProcesserController::class, 'EKMProductImportRequest'])->name('ekm_product_import_request');
+         Route::get('ekm-product-import-request/{config?}', [TaskProcesserController::class, 'EKMProductImportRequest'])->name('ekm_product_import_request');
 
 
     });

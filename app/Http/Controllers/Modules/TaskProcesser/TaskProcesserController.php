@@ -11,7 +11,7 @@ use App\Models\Inventory;
 use App\Models\OpTaskRecord; 
 use App\Models\Order; 
 use Auth; 
-use ManageEkm;
+use App\Libraries\ManageEkm;
 
 class TaskProcesserController extends Controller
 {
@@ -135,6 +135,7 @@ class TaskProcesserController extends Controller
     }
 
     public function EKMProductImportRequest($config) {
+        // dd($config);
         $user = Auth::user();
         $taskdata = OpTaskRecord::where(['isfinished' => 0, 'name' => 'import_product_ekm', 'account_id' => $user->account_id])->orderBy('priority', 'desc')->first();
         if ($user) {
@@ -147,11 +148,12 @@ class TaskProcesserController extends Controller
                     $taskdata->isstarted = 0;
                     $taskdata->isfinished = 0;
                     $taskdata->save();
-                    return Redirect::to('inventory/preimport')->with('alert-success', "Request processing..");
+                    return redirect()->back()->with('success', "Request processing..");
+                    // return Redirect::to('inventory/preimport')->with('success', "Request processing..");
                 }
             } else
-                return Redirect::back()->with('alert-success', "Task is alredy started");
+                return redirect()->back()->with('success', "Task is alredy started");
         }
-        return Redirect::back()->with('alert-error', "Invalid configuration or you dont have access to do that..");
+        return redirect()->back()->with('error', "Invalid configuration or you dont have access to do that..");
     }
 }

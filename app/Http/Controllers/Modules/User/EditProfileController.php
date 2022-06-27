@@ -169,6 +169,29 @@ class EditProfileController extends Controller
     }
 
     /**
+     * This is use for remove user profile image.
+     *
+     * @return \Illuminate\Http\Response
+    */
+
+    public function removeProfileImage($userid)
+    {
+      $user =  User::where('id',$userid)->first();
+      if(isset($user->image))
+      {
+        @unlink(storage_path('app/public/images/user_image/'.$user->image)); 
+        $input['image'] = '';
+        User::where('id', $user->id)->update($input);
+        return redirect()->route('profile')->with('success','Profile image deleted successfully!!');
+      }
+      else
+      {
+        return redirect()->back()->with('error','No user found.');
+      }
+      dd($user);
+    }
+
+    /**
      * This is use for update user password.
      *
      * @return \Illuminate\Http\Response
@@ -179,7 +202,7 @@ class EditProfileController extends Controller
     $user = Auth::user();
 
     $data = request()->validate([ 
-      'password' => ['required','required_with:old_password', 'string', 'min:6','different:old_password'],
+      'password' => ['required','required_with:old_password', 'string', 'min:8','different:old_password'],
       'password_confirmation' => ['required', 'required_with:password', 'same:password'],
       'old_password' => ['required','required_with:password', function ($attribute, $value, $fail) {
 

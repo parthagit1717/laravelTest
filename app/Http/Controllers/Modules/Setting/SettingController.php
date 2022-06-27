@@ -29,14 +29,17 @@ class SettingController extends Controller
         $accountid = $currnetUser->account_id;
 
         $getaccountservice = Accountservice::where('account_id',$accountid)->first();
+        // dd($getaccountservice);
 
+        $accountserviceid ='';
          
         if(isset($getaccountservice))
         {
             $accountserviceid = $getaccountservice;
         }
 
-         // dd($accountserviceid);
+        // dd($accountserviceid);
+        
 
         return view('modules.settings.settings',compact('currencies','accountserviceid'));
     }
