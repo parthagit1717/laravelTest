@@ -99,7 +99,7 @@ class ManageSubscriptionController extends Controller
 
                       <a href='javascript:void(0)' data-toggle='tooltip' data-id=".$post->id." title='Edit' class='edit btn btn-success edit-post' style=' padding:4px;'> Edit <i class='bi bi-pencil-square'></i></a> 
 
-                      <a href='javascript:void(0)' onclick='inactive(".$post->id.")' title='Click To Inactive Subscription' id='inactive' class='edit btn btn-danger' style='padding:4px;'>Inactive <i class='bi bi-hand-thumbs-down'></i></a>  &emsp;";
+                      <a href='javascript:void(0)' onclick='inactive(".$post->id.")' title='Click To Inactive Subscription' id='inactive' class='edit btn btn-success' style='padding:4px;'>Inactive <i class='bi bi-hand-thumbs-up'></i></a>  &emsp;";
                 }
                 else
                 {
@@ -107,7 +107,7 @@ class ManageSubscriptionController extends Controller
 
                      <a href='javascript:void(0)' data-toggle='tooltip' data-id=".$post->id." title='Edit' class='edit btn btn-success edit-post' '> Edit <i class='bi bi-pencil-square'></i></a>
 
-                    <a href='javascript:void(0)' onclick='active(".$post->id.")' title='Click To Active Subscription' id='active' class='edit btn btn-success'> Active <i class='bi bi bi-hand-thumbs-up'></i></a>&emsp;";   
+                    <a href='javascript:void(0)' onclick='active(".$post->id.")' title='Click To Active Subscription' id='active' class='edit btn btn-danger'> Inactive <i class='bi bi-hand-thumbs-down'></i></a>&emsp;";   
                 }
                 $data[] = $nestedData;
 
@@ -145,7 +145,7 @@ class ManageSubscriptionController extends Controller
                 "sub_vali" => "required|numeric|min:1",
                 "sub_price" => "required|numeric|min:1",
             ],[ 'name.required'=>'Subscription name is required.',
-                'sub_desc.required'=>'Subscription despriction required.',
+                'sub_desc.required'=>'Subscription description required.',
                 'sub_vali.required'=>'Subscription validity required.',
                 'min.required'=>'Subscription validity must be positive number.',
                 'sub_price.required'=>'Subscription price must be positive number.',
@@ -178,7 +178,7 @@ class ManageSubscriptionController extends Controller
                 "sub_vali" => "required|numeric|min:1",
                 "sub_price" => "required|numeric|min:1",
             ],[ 'name.required'=>'Subscription name is required.',
-                'sub_desc.required'=>'Subscription despriction required.',
+                'sub_desc.required'=>'Subscription description required.',
                 'sub_vali.required'=>'Subscription validity required.',
                 'sub_vali.min'=>'Subscription validity must be positive number.',
                 'sub_price.required'=>'Subscription price required.',

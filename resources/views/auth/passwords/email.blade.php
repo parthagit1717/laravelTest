@@ -74,7 +74,7 @@
                
 
                 @if(session()->has('error')) 
-                <div class="col-lg-6 col-md-6 center" style="display: flex; justify-content: center; margin-top: 10px;">
+                <div class="col-lg-12 col-md-12 center" style="display: flex; justify-content: center; margin-top: 10px;">
                     <p class="alert alert-danger col-lg-5" id="danger-alert" style="font-size: 16px; background-color:#ff9999"><span class="badge badge-pill badge-danger" style="background-color: #cc0000"> Error !</span>
                         <span id="msg" >
                         {{ session()->get('error') }}</span>
@@ -111,6 +111,9 @@
                                          
                                         <div class="container-login100-form-btn">
                                             <button type="submit" class="login100-form-btn btn-primary">Submit</button>
+                                        </div>
+                                        <div class="text-center pt-3">
+                                            <p class="text-dark mb-0">Already have account?<a href="{{ route('login') }}" class="text-primary ms-1">Sign In</a></p>
                                         </div> 
                                     </div>
                                 </div>

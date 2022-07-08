@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>ONEPATCH CONNECT : EKM EBAY | Subscription Mail</title>
+      <title>Onepatch Connect :: Ebay EKM|Subscription Mail</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
        
       <style type="text/css">
@@ -99,13 +99,13 @@
    <body>
 
       <div style="max-width:720px; margin:0 auto;">
-        <div style="/*width:620px;*/background-color: #a4508b;background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%); /*padding: 0px 10px;*/ border:1px solid #dcd7d7; height:75px;">
-            <div style="float: none; text-align: center; margin-top: 0px; background:url('{{ URL::to('#') }}') repeat center center">              
-              <img src="http://54.78.239.1:8084/assets/images/brand/logo-2.png" style="margin-top:margin-top:15px;" width="120"height="40px" alt="">
-             <!--  <p>Onepatch Connect :: Ebay EKM</p> -->
+         <div style="/*width:620px;*/background: #ffffff; /*padding: 0px 10px;*/ border:1px solid #dcd7d7;">
+            <div style="float: none; text-align: center; margin-top: 0px; background:url('#') repeat center center">              
+              <img src="http://54.78.239.1:8084/assets/images/brand/logo-2.png" style="margin-top:10px;" width="270"height="60" alt="">
+              <!-- <p>OpWebTracker</p> -->
             </div>
             <div style="float: right;   text-align: center; margin-top: 0px;">
-              <p style="margin-right: 5px;"> {{@$data['today']}}</p>
+              <p style="margin-right: 5px;">{{@$data['today']}}</p>
             </div>
           </div>
           
@@ -143,7 +143,7 @@
                     <tr>
                       <td>Subscription Price</td> 
                       <td>{{@$data['amount']}} {{@$data['currency']}}</td>
-                    </tr> 
+                    </tr>
                        
                   </table>
                 </div>  
@@ -152,16 +152,16 @@
             </div> 
             
             
-            <p style=" font-family:Arial; font-size:14px; font-weight:500; color:#363839;margin: 0px 0px 10px 0px;">Cheers,</p>
+            <p style=" font-family:Arial; font-size:14px; font-weight:500; color:#363839;margin: 0px 0px 10px 0px;">Thank You,</p>
             <p style=" font-family:Arial; font-size:14px; font-weight:500; color:#363839;margin: 0px 0px 10px 0px;">Team Onepatch Connect :: Ebay EKM.</p>
              
          </div>
-         <div style="/*width:620px;*/background-color: #a4508b;background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%); /*padding: 0px 10px;*/ border:1px solid #dcd7d7;color: white;">
-            <div id="sub-footer">
-                <div class="row footer_row">
-                    <div class="column">Onepatch Connect :: Ebay EKMs© 2021. All Rights Reserved.</div>
-                    <div class="column">info@OPConnect.com</div>
-                    <div class="column">22, Lorem ipsum dolor, consectetur adipiscing.<br>Mob:- (541) 754-3010</div>
+         <div style="/*width:620px;*/background-color: #ffffff; /*padding: 0px 10px;*/ border:1px solid #dcd7d7;color: #000;">
+            <div id="sub-footer"">
+                <div class="row footer_row" style="height: 20px;">
+                    <div class="column1" style=" font-family:Arial; font-size:14px; font-weight:500; color:#363839;margin: 0px 0px 10px 0px; text-align: center">Onepatch Connect :: Ebay EKM © <?php echo date("Y"); ?>. All Rights Reserved.</div>
+                    <!-- <div class="column">info@OPConnect.com</div>
+                    <div class="column">22, Lorem ipsum dolor, consectetur adipiscing.<br>Mob:- (541) 754-3010</div> -->
                 </div>
             </div>
          </div>

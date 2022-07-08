@@ -141,7 +141,7 @@ class ManageUserController extends Controller
         {
             $validation = \Validator::make($request->all(),[ 
                 "name" => "required",  
-                'email' => 'required|string|max:255|email|unique:users,email,'.$request->user_id,
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$request->user_id, 'regex:/^\w+[-\.\w]*@(?!(?:myemail)\.com$)\w+[-\.\w]*?\.\w{2,4}$/'],
                 'image' => 'mimes:jpeg,jpg,png|max:10000|dimensions:min_width=100,min_height=100',
                 'password' => ['nullable','required_with:old_password', 'string', 'min:8'], 
                 'password_confirmation' =>['nullable', 'required_with:password', 'same:password'],
@@ -181,7 +181,7 @@ class ManageUserController extends Controller
         {
             $validation = \Validator::make($request->all(),[ 
                 "name" => "required",  
-                'email' => 'required|string|max:255|email|unique:users,email,'.$request->user_id,
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$request->user_id, 'regex:/^\w+[-\.\w]*@(?!(?:myemail)\.com$)\w+[-\.\w]*?\.\w{2,4}$/'],
                 'image' => 'mimes:jpeg,jpg,png|max:10000|dimensions:min_width=100,min_height=100',
                 'password' => ['required','required_with:old_password', 'string', 'min:8'], 
                 'password_confirmation' =>['required', 'required_with:password', 'same:password'],

@@ -254,7 +254,7 @@ class SubscriptionController extends Controller
 
         // dd($maildata);
         // dd(env('MAIL_FROM_ADDRESS'));
-        // Mail::send(new SubscriptionMail($maildata));
+        Mail::send(new SubscriptionMail($maildata));
         
         return redirect()->route('subPlanList')->with('success','You have subscribe successfully');
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>ONEPATCH CONNECT : EKM EBAY|Email Verify</title>
+      <title>Onepatch Connect :: Ebay EKM|Email Verify</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -69,7 +69,7 @@
           width: 33.33%;
           }
           .footer_row{ 
-          height: 60px;
+          /*height: 60px;*/
           margin: 10px 0;
           display: block;
           padding-left: 20px;
@@ -87,13 +87,13 @@
    </head>
    <body>
       <div style="max-width:720px; margin:0 auto;">
-          <div style="/*width:620px;*/background-color: #a4508b;background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%); /*padding: 0px 10px;*/ border:1px solid #dcd7d7; height:75px;">
-            <div style="float: none; text-align: center; margin-top: 0px; background:url('{{ URL::to('#') }}') repeat center center">              
-               <img src="http://54.78.239.1:8084/assets/images/brand/logo-2.png" style="margin-top:margin-top:15px;" width="120"height="40px" alt="">
+          <div style="/*width:620px;*/background-color:#ffffff; /*padding: 0px 10px;*/ border:1px solid #dcd7d7; height: 75px;">
+            <div style="float: none; text-align: center; margin-top: 0px; background:url('#') repeat center center">              
+               <img src="http://54.78.239.1:8084/assets/images/brand/logo-2.png" style="margin-top:10px;" width="270"height="60" alt="">
               <!-- <p>Onepatch Connect :: Ebay EKM</p> -->
             </div>
          </div>
-         <div style="max-width:719px; border:1px solid #dcd7d7; margin:0 0; padding:15px; border-top:none;">
+         <div style="max-width:720px; border:1px solid #dcd7d7; margin:0 0; padding:15px; border-top:none;">
             <h1 style="font-family:Arial; font-size:16px; font-weight:500; /*color:#8ccd56;*/ margin:5px 0 12px 0;">Dear {{@$data['name']}},</h1>
             <div style="display:block; overflow:hidden; width:100%;">
                <p style="font-family:Arial; font-size:14px; font-weight:500; color:#000;margin-left: 5px;">
@@ -101,27 +101,29 @@
                </p>  
                <div style="display:block;overflow:hidden; width:100%; text-align:center; margin: 0px 0px 10px 0px;">
 
-                  <a href="{{ route('user.verify', [@$data['email_vcode'],md5(@$data['id'])]) }}" style="font-family:Arial; border-radius:17px;font-size:15px; font-weight:500; color:#FFF; display:inline-block; padding: 7px 12px; background-color: #a4508b;background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%); text-decoration:none;">Verify Email</a>
+                  <a href="{{ route('user.verify', [@$data['email_vcode'],md5(@$data['id'])]) }}" style="font-family:Arial; border-radius:17px;font-size:15px; font-weight:500; color:#FFF; display:inline-block; padding: 7px 12px; background-color: #ffc107;background-image: linear-gradient(326deg, #ffc107 0%, #ffc107 74%); text-decoration:none;">Verify Email</a>
                </div>
-                  <p style="font-family:Arial; font-size:14px; font-weight:500; color:#000;margin-left: 5px;">
-                    If that doesn't work, copy and paste the following link in your browser:
-                  </p>  
-                <div style="display:block;overflow:hidden; width:100%; margin: 0px 0px 10px 0px;"> 
-                  <p style="font-family:Arial; font-size:14px; font-weight:500; color:#ff944d;margin-left: 5px;">{{ route('user.verify', [@$data['email_vcode'],md5(@$data['id'])]) }}</p>
-                </div>                
+               <p style="font-family:Arial; font-size:14px; font-weight:500; color:#000;margin-left: 5px;">
+                  If that doesn't work, copy and paste the following link in your browser:
+               </p>  
+               <div style="display:block;overflow:hidden; width:100%; margin: 0px 0px 10px 0px;"> 
+                <p style="font-family:Arial; font-size:14px; font-weight:500; color:#ff944d;margin-left: 5px;">
+                  {{ route('user.verify', [@$data['email_vcode'],md5(@$data['id'])]) }}
+                </p>
+               </div>               
             </div> 
             
-            <p style="font-family:Arial; font-size:14px; font-weight:500; color:#363839;margin: 0px 0px 10px 0px; margin-top: 20px;">Thank You,</p>
+            <p style="font-family:Arial; font-size:14px; font-weight:500; color:#363839;margin: 0px 0px 10px 0px; margin-top: 20px;">Cheers,</p>
             <p style=" font-family:Arial; font-size:14px; font-weight:500; color:#363839;margin: 0px 0px 10px 0px;">Team Onepatch Connect :: Ebay EKM.</p>
             <!-- <p style=" font-family:Arial; font-size:14px; font-weight:500; color:#363839;margin: 0px 0px 10px 0px;">Contact: info@OpwebTracker.com</p> -->
          </div>
 
-         <div style="/*width:620px;*/background-color: #a4508b;background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%); /*padding: 0px 10px;*/ border:1px solid #dcd7d7;color: white;">
-            <div id="sub-footer">
+         <div style="/*width:620px;*/background-color: #ffffff; /*padding: 0px 10px;*/ border:1px solid #dcd7d7;color: #000;">
+            <div id="sub-footer"">
                 <div class="row footer_row">
-                    <div class="column">Onepatch Connect :: Ebay EKMs© 2021. All Rights Reserved.</div>
-                    <div class="column">info@OPConnect.com</div>
-                    <div class="column">22, Lorem ipsum dolor, consectetur adipiscing.<br>Mob:- (541) 754-3010</div>
+                    <div class="column1" style=" font-family:Arial; font-size:14px; font-weight:500; color:#363839;margin: 0px 0px 10px 0px; text-align: center">Onepatch Connect :: Ebay EKMs © <?php echo date("Y"); ?>. All Rights Reserved.</div>
+                    <!-- <div class="column">info@OPConnect.com</div>
+                    <div class="column">22, Lorem ipsum dolor, consectetur adipiscing.<br>Mob:- (541) 754-3010</div> -->
                 </div>
             </div>
          </div>

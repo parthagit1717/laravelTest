@@ -98,8 +98,11 @@ class EditProfileController extends Controller
         
     	 
     	$this->validate($request, [ 
-            'name'  =>'required|string|max:255', 
-            'zipcode' => 'integer',
+            'name'  =>'required|string|max:255',
+            'country'  =>'required|string|max:255',
+            'state'  =>'required|string|max:255',
+            'city'  =>'required|string|max:255', 
+            'zipcode' => 'required|integer|min:4',
             'image' => 'mimes:jpeg,jpg,png|max:10000|dimensions:min_width=100,min_height=100', 
         ],
         ['name.required'=>'Please enter your full name.']); 
@@ -188,7 +191,7 @@ class EditProfileController extends Controller
       {
         return redirect()->back()->with('error','No user found.');
       }
-      dd($user);
+      
     }
 
     /**

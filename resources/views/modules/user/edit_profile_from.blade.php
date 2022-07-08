@@ -134,18 +134,42 @@
                                                 <label for="countryLabel">Country</label>
                                                 <input type="text" class="form-control" id="countryLabel" placeholder="Country Name" name="country" value="{{ $user->country ? $user->country : $ipdetails->country_name}}">
                                             </div>
+                                            @if($errors->has('country'))
+                                              <span class="invalide-feedback" role='alert' >
+                                                  <strong style="color: red;">{{ $errors->first('country') }}</strong>
+                                              </span> 
+                                            @endif
+
                                             <div class="form-group">
                                                 <label for="stateLabel">State</label>
                                                 <input type="text" class="form-control" id="stateLabel" placeholder="State Name" name="state" value="{{$user->state ? $user->state : @$ipdetails->region}}">
                                             </div>
+                                            @if($errors->has('state'))
+                                              <span class="invalide-feedback" role='alert' >
+                                                  <strong style="color: red;">{{ $errors->first('state') }}</strong>
+                                              </span> 
+                                            @endif
+
                                             <div class="form-group">
                                                 <label for="cityLabel">City</label>
                                                 <input type="text" class="form-control" id="cityLabel" placeholder="City Name" name="city" value="{{$user->city ? $user->city : @$ipdetails->city}}">
                                             </div> 
+                                            @if($errors->has('city'))
+                                              <span class="invalide-feedback" role='alert' >
+                                                  <strong style="color: red;">{{ $errors->first('city') }}</strong>
+                                              </span> 
+                                            @endif
+
                                             <div class="form-group">
                                                 <label for="zipcodeLabel">Zip Code</label>
                                                 <input type="number" class="form-control" id="zipcodeLabel" placeholder="City Name" name="zipcode" value="{{$user->zipcode ? $user->zipcode : @$ipdetails->postal}}">
                                             </div>
+                                            @if($errors->has('zipcode'))
+                                              <span class="invalide-feedback" role='alert' >
+                                                  <strong style="color: red;">{{ $errors->first('zipcode') }}</strong>
+                                              </span> 
+                                            @endif
+                                            
                                             <div class="form-group">
                                                 <label for="zipcodeLabel">Profile Image</label>
                                                 <div class="col-sm-" style="margin: auto;">

@@ -111,7 +111,7 @@
                                           <div class="card-header"> 
                                             <div class="row" style="width: 100%;">
                                               <div class="col-sm-6">
-                                                <h3>Welcome <span>{{ Auth::user() ? Auth::user()->name : '' }}</span></h3>
+                                                <h3><strong>Welcome</strong><span>{{ Auth::user() ? Auth::user()->name : '' }}</span></h3>
                                               </div>
                                               <div class="col-sm-6">
                                                 <a href="{{ route('edit_profile') }}" class="btn btn-success" id="add-new-post">Edit Profile <i class="bi bi-pencil-square"></i></a> 
