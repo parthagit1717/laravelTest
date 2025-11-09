@@ -7,14 +7,14 @@
     <meta charset="UTF-8">
     <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Onepatch Connect :: Ebay EKM"> 
-    <meta name="keywords" content="admin,admin dashboard,admin panel,admin template,bootstrap,clean,dashboard,flat,jquery,modern,responsive,premium admin templates,responsive admin,ui,ui kit.">
+    <meta name="description" content="Partha Task"> 
+     
 
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/brand/favicon.ico')}}" />
 
     <!-- TITLE -->
-    <title>ONEPATCH CONNECT : EKM EBAY | Forgot Password</title>
+    <title>Forgot Password</title>
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -59,7 +59,7 @@
                 <!-- CONTAINER OPEN -->
                 <div class="col col-login mx-auto mt-7">
                     <div class="text-center">
-                        <img src="{{asset('assets/images/brand/logo-2.png')}}" class="header-brand-img" alt="" style="width: 300px;height: 100px;">
+                         
                     </div> 
                 </div>
                 @if(session()->has('success'))

@@ -42,4 +42,9 @@ class User extends Authenticatable
     public function getUserSubscription(){
         return $this->hasOne('App\Models\Subscription','id','subs_id');
     }
+
+    public function posts()
+    {
+        return $this->hasMany(\App\Models\Post::class, 'user_id');
+    }
 }

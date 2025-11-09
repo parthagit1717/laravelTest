@@ -17,7 +17,16 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('country')->nullable();
+            $table->string('state')->nullable();
+            $table->string('city')->nullable();
+            $table->string('email_vcode')->nullable();
+            $table->string('zipcode')->nullable();
+            $table->string('image')->nullable();
+            $table->unsignedTinyInteger('status')->default(0)
+            ->comment('0=Unverified,1=Active,2=Inactive');
             $table->timestamp('email_verified_at')->nullable();
+            $table->integer('user_type')->default(3)->comment('1=>SuperAdmin|2=>Admin|=>User');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

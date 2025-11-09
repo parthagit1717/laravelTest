@@ -36,7 +36,7 @@ class EmailVerifyMail extends Mailable
           
         return $this->view('mail.emailverify', $data)
                     ->to($this->request['email'])
-                    ->subject('ONEPATCH CONNECT : EKM EBAY Email Verification')
-                    ->from('onepatchoffice@gmail.com',env('APP_NAME'));
+                    ->subject('Email Verification')
+                    ->from('office@gmail.com',env('APP_NAME'));
     }
 }

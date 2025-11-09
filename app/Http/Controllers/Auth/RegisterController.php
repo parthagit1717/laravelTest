@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\Models\User;
-use App\Models\UserAccount;
+use App\Models\User; 
 use App\Mail\EmailVerifyMail;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -82,10 +81,9 @@ class RegisterController extends Controller
         $Userdata['name'] = $request->name;
         $Userdata['email'] = $request->email;
 
-        $useraccount = UserAccount::create($Userdata);
+         
 
-        $user = User::create([
-            'account_id' =>$useraccount->id, 
+        $user = User::create([ 
             'name' => $request->name,
             'email' => $request->email,
             'email_vcode' => rand(10000,99999),

@@ -64,16 +64,17 @@ class LoginController extends Controller
             {
                 // dd('ok');
                 //Login this user..... 
-                if (Auth::guard('web')->attempt(['email' => $username, 'password' =>$userpass])) 
-                { 
-                    // dd('ok');
+                if ($user->google_id) {
+                    return back()->with('error', 'This account is linked with Google. Please use "Login with Google" to access your account.');
+                }
 
+                else if (Auth::guard('web')->attempt(['email' => $username, 'password' =>$userpass])) 
+                {  
                     return redirect()->intended(route('dashboard'));
                 }
 
                 else
-                {
-                     
+                {   
                     // Session::flash('msg', 'Invalide login !!!');
                     return back()->with('error', 'Invalide login !!!');
 

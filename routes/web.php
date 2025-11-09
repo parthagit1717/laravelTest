@@ -4,35 +4,72 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
-use App\Http\Controllers\Modules\Dashboard\DashboardController;
-use App\Http\Controllers\Modules\Setting\SettingController;
-use App\Http\Controllers\Modules\Admin\ManageUserController;
-use App\Http\Controllers\Modules\Admin\ManageSubscriptionController;
-use App\Http\Controllers\Modules\Admin\TransactionController;
+use App\Http\Controllers\Modules\Dashboard\DashboardController; 
 use App\Http\Controllers\Modules\User\EditProfileController;
-use App\Http\Controllers\Modules\User\Subscription\SubscriptionController;
-use App\Http\Controllers\Modules\TaskProcesser\TaskProcesserController;
+use App\Http\Controllers\Modules\Product\ProductController;
+use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\Modules\Post\PostController;
+use App\Http\Controllers\Modules\Post\PostLikeController;
+use App\Http\Controllers\Modules\Post\CommentController;
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\Auth\LoginController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
 
 Route::get('/', function () {
-     
     return view('auth.login');
 });
 
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('product-cat', [App\Http\Controllers\HomeController::class, 'productCat'])->name('product_cat');
+// Admin guest routes (login, forgot password)
+Route::prefix('admin')->name('admin.')->group(function () {
 
+    Route::middleware('guest.admin')->group(function () {
+        // Login
+        Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+        Route::post('login', [LoginController::class, 'login'])->name('login.submit');
+
+        // Password reset (forgot)
+        Route::get('password/reset', [App\Http\Controllers\Admin\Auth\ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+        Route::post('password/email', [App\Http\Controllers\Admin\Auth\ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+
+        // Reset
+        Route::get('password/reset/{token}', [App\Http\Controllers\Admin\Auth\ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+        Route::post('password/reset', [App\Http\Controllers\Admin\Auth\ResetPasswordController::class, 'reset'])->name('password.update');
+    });
+
+    // Authenticated admin routes
+    Route::middleware('auth.admin')->group(function () {
+        Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+        Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+        // Users
+        Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
+        Route::post('/users/{user}/toggle-status', [UserController::class, 'toggleStatus'])->name('admin.users.toggleStatus');
+        Route::post('/users/{user}/verify', [UserController::class, 'verifyEmail'])->name('admin.users.verifyEmail');
+        Route::get('/users/{user}', [UserController::class, 'show'])->name('admin.users.show');
+
+        // Posts
+        Route::get('posts', [App\Http\Controllers\Admin\PostController::class,'index'])->name('posts.index');
+        Route::post('posts/{post}/toggle-status', [App\Http\Controllers\Admin\PostController::class,'toggleStatus'])->name('posts.toggleStatus');
+
+        // Comments
+        Route::get('comments', [App\Http\Controllers\Admin\CommentController::class, 'index'])->name('comments.index');
+        Route::post('comments/{comment}/toggle', [App\Http\Controllers\Admin\CommentController::class, 'toggleStatus'])->name('comments.toggleStatus');
+    });
+});
+
+// --- GOOGLE SOCIALITE ROUTES ---
+Route::get('auth/google/redirect', [GoogleController::class, 'redirectToGoogle'])->name('google.redirect');
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+
+// User verification & password reset routes
 Route::get('user-verify/{email_vcode}/{id}', [RegisterController::class, 'verifyEmail'])->name('user.verify');
 
 Route::get('password-reset-from', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('user.password.request');
@@ -41,65 +78,31 @@ Route::post('password-email', [ForgotPasswordController::class, 'sendResetLinkEm
 Route::get('password-reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('user.password.reset');
 Route::post('password-update', [ResetPasswordController::class, 'reset'])->name('user.password.update');
 
-Route::group(['middleware' => ['auth']],function(){
-
-    Route::group(['middleware' => 'Subscription'], function() {
-    	Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    	Route::get('settings', [SettingController::class, 'settings'])->name('settings');
-
-        // EKM Connect....
-        Route::post('saveekmdata', [SettingController::class, 'saveekmdata'])->name('saveekmdata');
-        Route::post('authekmservice', [SettingController::class, 'authekmservice'])->name('authekmservice');
-        Route::get('reconnectekmservice/{serviceid?}', [SettingController::class, 'reconnectEkmService'])->name('reconnectekmservice');
 
 
-         
-    	// User edit profile...
-    	Route::get('profile', [EditProfileController::class, 'userProfile'])->name('profile');
-    	Route::get('edit-profile', [EditProfileController::class, 'editProfile'])->name('edit_profile');
-    	Route::post('update-profile', [EditProfileController::class, 'updateProfile'])->name('update_profile');
-    	Route::post('update-pasword', [EditProfileController::class, 'updatePassword'])->name('update_pasword');
-        Route::get('remove-profile-image/{userid?}', [EditProfileController::class, 'removeProfileImage'])->name('remove_profile_image');
+// Authenticated user routes
+Route::group(['middleware' => ['auth']], function() {
 
-        // Task Processer Routes...
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('settings', [SettingController::class, 'settings'])->name('settings');
 
-        Route::get('ekm-queue-task-generate', [TaskProcesserController::class, 'ekmImportprocessqueuetaskgenerate'])->name('ekmImportprocessqueuetaskgenerate');
-        Route::get('ekm-queue-task-process', [TaskProcesserController::class, 'ekmImportprocessqueuetask'])->name('ekmImportprocessqueuetask');
+    // User edit profile
+    Route::get('profile', [EditProfileController::class, 'userProfile'])->name('profile');
+    Route::get('edit-profile', [EditProfileController::class, 'editProfile'])->name('edit_profile');
+    Route::post('update-profile', [EditProfileController::class, 'updateProfile'])->name('update_profile');
+    Route::post('update-password', [EditProfileController::class, 'updatePassword'])->name('update_password');
+    Route::get('remove-profile-image/{user?}', [EditProfileController::class, 'removeProfileImage'])->name('remove_profile_image');
 
-         Route::get('ekm-product-import-request/{config?}', [TaskProcesserController::class, 'EKMProductImportRequest'])->name('ekm_product_import_request');
+    // Posts
+    Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+    Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
+    Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
+    Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+    Route::get('/dashboard/posts', [PostController::class, 'loadMorePosts'])->name('dashboard.posts.load');
 
-
-    });
-
-
-    // Subscription routes.....
-    Route::get('subscription', [SubscriptionController::class, 'subPlanList'])->name('subPlanList');
-    Route::get('add-subscription/{user_id}/{sub_id}', [SubscriptionController::class, 'addSubscription'])->name('add_subs');
-
-    Route::get('subscription-over', [SubscriptionController::class, 'subPlanError'])->name('subscribe_error');
-    Route::get('success', [SubscriptionController::class, 'success'])->name('success');
-    Route::post('create-payment-intent', [SubscriptionController::class, 'createPaymentIntent'])->name('create_payment_intent');
-    Route::post('stripe', [SubscriptionController::class, 'stripePost'])->name('stripe.post');
-
-	// Admin Routes....
-	Route::get('manage-user', [ManageUserController::class, 'manageUser'])->name('manage.user');
-	Route::get('alluser', [ManageUserController::class, 'allUser'])->name('alluser');
-    Route::get('viewuser/{id}', [ManageUserController::class, 'viewUser'])->name('view_user'); 
-    Route::get('inactiveuser/{id}', [ManageUserController::class, 'inactiveUser'])->name('inactiveuser');
-    Route::get('activeuser/{id}', [ManageUserController::class, 'activeuser'])->name('activeuser');
-    Route::post('store-user', [ManageUserController::class, 'storeUser'])->name('store_user');
-
-    Route::get('manage-transaction', [TransactionController::class, 'Transaction'])->name('transaction');
-    Route::get('alltransaction', [TransactionController::class, 'allTransaction'])->name('alltransaction');
-
-    Route::get('editemp/{id}', [ManageUserController::class, 'editEmp'])->name('edit.emp');
-
-    // For manage subscription route for Admin....
-    Route::get('manage-subscription', [ManageSubscriptionController::class, 'manageSubscription'])->name('manage_subs');
-
-    Route::get('allsubscription', [ManageSubscriptionController::class, 'allSubscription'])->name('allSubscription');
-    Route::post('store-subscription', [ManageSubscriptionController::class, 'storeSubscription'])->name('store_subscription');
-    Route::get('editsubscription/{id}', [ManageSubscriptionController::class, 'editSubscription'])->name('edit.subscription');
-    Route::get('inactivesubscription/{id}', [ManageSubscriptionController::class, 'inactiveSubscription'])->name('inactiveSubscription');
-    Route::get('activesubscription/{id}', [ManageSubscriptionController::class, 'activeSubscription'])->name('activeSubscription'); 
+    // Comments
+    Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('posts.comments.store');
+    Route::put('/comments/{comment}', [CommentController::class, 'update'])->name('comments.update');
+    Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+    Route::post('/posts/{post}/like', [PostLikeController::class, 'toggle'])->name('posts.like'); 
 });

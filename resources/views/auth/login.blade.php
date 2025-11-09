@@ -7,14 +7,14 @@
     <meta charset="UTF-8">
     <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Onepatch Connect :: Ebay EKM"> 
+    <meta name="description" content="Partha Task"> 
     <meta name="keywords" content="admin,admin dashboard,admin panel,admin template,bootstrap,clean,dashboard,flat,jquery,modern,responsive,premium admin templates,responsive admin,ui,ui kit.">
 
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/brand/favicon.ico')}}" />
 
     <!-- TITLE -->
-    <title>ONEPATCH CONNECT : EKM EBAY | Login</title>
+    <title>Login</title>
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -58,8 +58,7 @@
 
                 <!-- CONTAINER OPEN -->
                 <div class="col col-login mx-auto mt-7">
-                    <div class="text-center">
-                        <img src="{{asset('assets/images/brand/logo-2.png')}}" class="header-brand-img" alt="" style="width: 300px;height: 100px;">
+                    <div class="text-center"> 
                     </div> 
                 </div>
                 @if(session()->has('success'))
@@ -127,8 +126,28 @@
                                             <button type="submit" class="login100-form-btn btn-primary">Login</button>
                                         </div>
                                         <div class="text-center pt-3">
-                                            <p class="text-dark mb-0">Not a member?<a href="{{ route('register') }}" class="text-primary ms-1">Sign UP</a></p>
+                                            <p class="text-dark mb-0">Not a member?<a href="{{ route('register') }}" class="text-primary ms-1">Sign UP </a></p>
                                         </div>
+
+                                        <div class="form-group row mt-3">
+                                        <div class="col-md-12">
+                                            <a href="{{ route('google.redirect') }}" 
+                                               style="display: block; text-align: center; padding: 10px 15px; 
+                                                      border-radius: 4px; text-decoration: none; 
+                                                      color: #fff; background-color: #DB4437; border: 1px solid #DB4437; 
+                                                      font-weight: bold;">
+                                                <svg style="width:16px; height:16px; vertical-align: middle; margin-right: 8px;" 
+                                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+                                                    <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 7.999-11.303 7.999c-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.158 8.067 3.03l5.657-5.657C34.046 6.091 29.051 4 24 4C12.955 4 4 12.955 4 24s8.955 20 20 20s20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
+                                                    <path fill="#FF3D00" d="M6.306 14.691L1.139 9.809C3.263 5.922 7.749 3.535 12.875 3.535c3.059 0 5.842 1.158 8.067 3.03l5.657-5.657C34.046 6.091 29.051 4 24 4C16.318 4 9.658 7.391 6.306 14.691z"/>
+                                                    <path fill="#4CAF50" d="M24 44c5.15 0 9.844-1.921 13.386-5.021l-5.657-5.657c-2.225 1.872-5.008 3.03-8.067 3.03c-5.223 0-9.654-3.342-11.303-7.999H4.389C6.429 37.957 14.639 44 24 44z"/>
+                                                    <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303c-1.092 3.111-2.883 5.824-5.064 7.712l-5.657 5.657C36.88 34.092 42.133 28.534 43.611 20.083z"/>
+                                                </svg>
+                                                Continue with Google
+                                            </a>
+                                        </div>
+                                    </div>
+
                                     </div>
                                 </div>
                             </div>

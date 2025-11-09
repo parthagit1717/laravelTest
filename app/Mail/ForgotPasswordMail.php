@@ -36,7 +36,7 @@ class ForgotPasswordMail extends Mailable
 
         return $this->view('mail.forgot_password', $data)
                     ->to($this->request['email'])
-                    ->subject('ONEPATCH CONNECT : EKM EBAY Forgot Password')
-                    ->from('onepatchoffice@gmail.com',env('APP_NAME'));
+                    ->subject('Forgot Password')
+                    ->from('office@gmail.com',env('APP_NAME'));
     }
 }
