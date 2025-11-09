@@ -1,7 +1,9 @@
-@extends('layouts.app2')
-@section('title') Profile @endsection
+ 
 
-@section('content')
+@extends('layouts.app2')
+@section('title', 'Profile')
+
+@section('content') 
 
 
 <div class="profile-summary-area">

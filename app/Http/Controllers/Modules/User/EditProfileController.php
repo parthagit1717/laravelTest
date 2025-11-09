@@ -31,8 +31,11 @@ class EditProfileController extends Controller
     */
     public function userProfile()
     {   
-        
+        $user = Auth::user();
         $data['user'] =  User::where('id',(Auth::User()->id))->first();
+
+        $data['totalPosts'] = $user->posts()->where('is_blocked', 0)->count();
+        $data['totalLikes'] = $user->posts()->withCount('likes')->get()->sum('likes_count');
 
         return view('modules.user.user_profile')->with(@$data);
     }
@@ -78,8 +81,9 @@ class EditProfileController extends Controller
         
         $data['user'] =  User::find(Auth::User()->id);  
 
-
-        
+        $user = Auth::user();
+        $data['totalPosts'] = $user->posts()->where('is_blocked', 0)->count();
+        $data['totalLikes'] = $user->posts()->withCount('likes')->get()->sum('likes_count');
         
         return view('modules.user.edit_profile_from')->with(@$data);
     }

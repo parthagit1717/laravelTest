@@ -2,138 +2,7 @@
 @section('title') Profile @endsection
 
 @section('content')
-<style>
-/* REMOVE the width, padding, margin override! */
-.profile-header-row {
-    width: 100%;
-    max-width: 1060px;
-    margin: 0;
-    padding-top: 38px;
-    padding-bottom: 0;
-    text-align: left;
-}
-.page-header .page-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #222338;
-    margin-bottom: 0;
-    padding-left: 18px;
-    padding-top: 0;
-}
-.page-header .breadcrumb {
-    font-size: 15px;
-    padding-left: 0 !important;
-}
-.breadcrumb {
-    padding-left: 18px;
-    margin-bottom: 10;
-    margin-bottom: 10;
-    background: transparent;
-    text-align: left;
-    font-size: 17px;
-}
-.profile-center-area {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding-top: 0;
-    width: 100%;
-}
-.fixed-profile-cards-row {
-    display: flex;
-    flex-direction: row;
-    gap: 2.6rem;
-    justify-content: center;
-    align-items: flex-start;
-    width: 100%;
-    margin: 0;
-    max-width: 1060px;
-}
-.fixed-profile-card {
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 1px 8px 0 #e6eeff;
-    padding: 2.3rem 2.2rem 2rem 2.2rem;
-    width: 410px;
-    min-width: 310px;
-    min-height: 540px;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-}
-.fixed-profile-card.edit-profile-big {
-    width: 500px;
-    min-width: 330px;
-    max-width: 100%;
-}
-.profile-header-row {
-    width: 100%;
-    max-width: 1060px;
-    margin: 0;
-    padding-top: 0px;
-    padding-bottom: 0;
-    text-align: left;
-}
-@media (max-width:1200px) {
-    .profile-header-row,
-    .fixed-profile-cards-row {
-        max-width: 99vw;
-    }
-}
-@media (max-width:991px) {
-    .fixed-profile-cards-row {
-        flex-direction: column;
-        align-items: center;
-        gap: 2.2rem;
-    }
-    .fixed-profile-card,
-    .fixed-profile-card.edit-profile-big {
-        min-width: 94vw;
-        max-width: 99vw;
-        width: 97vw;
-    }
-}
-.profile-title {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-size: 1.35rem;
-    font-weight: 600;
-    color: #171a1f;
-    letter-spacing: 0.03em;
-}
-.profile-avatar {
-    width: 100px;
-    height: 120px;
-    border-radius: 16px;
-    object-fit: cover;
-    margin: 0 auto 0.7em auto;
-    box-shadow: 0 4px 16px 0 #e6eeff77;
-}
-.img-remove-btn {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    color: #dc3545;
-    font-size: 1.6rem;
-    cursor: pointer;
-    background: white;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: box-shadow .25s;
-    box-shadow: 0 2px 12px 0 #e6eeff88;
-}
-.img-remove-btn:hover {
-    background: #ffeaea;
-    color: #c82333;
-}
-</style>
+
 
 <div class="profile-center-area">
     <div class="page-header profile-header-row">
@@ -149,7 +18,7 @@
         <!-- Change Password -->
         <div class="fixed-profile-card">
             <div class="profile-title">Change Password</div>
-            <form id="edit-profile-form" method="POST" action="{{ route('update_pasword') }}" enctype="multipart/form-data" autocomplete="off">
+            <form id="edit-profile-form" method="POST" action="{{ route('update_password') }}" enctype="multipart/form-data" autocomplete="off">
                 @csrf
                 <input type="hidden" name="user_id" value="{{$user->id}}" id="user_id">
                 <div class="text-center chat-image mb-4 position-relative">

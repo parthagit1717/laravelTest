@@ -1,58 +1,7 @@
 @extends('layouts.app2')
 @section('title', 'Dashboard')
 
-@section('content')
-
-<style>
-.btn-like {
-  background: #f8fafc;
-  color: #48525c;
-  border: 1px solid #dbeafe;
-  font-weight: 500;
-}
-.btn-like.liked {
-  background: #dff3fb !important;
-  color: #0d6efd !important;
-  font-weight: bold !important;
-  border: 1px solid #aee1fa !important;
-}
-.badge-owner {
-  background: #ffe066;
-  color: #856404;
-  font-size: 0.75em;
-  border-radius: 0.7em;
-  padding: 0.24em 0.65em;
-  margin-left: 0.5em;
-  vertical-align: middle;
-}
-.likers-list {
-  background: #f8fafc;
-  border: 1px solid #e3eaf3;
-  border-radius: 6px;
-  padding: 0.4em 1em 0.6em 1em;
-  margin-bottom: 1em;
-}
-.likers-list-user i {
-  color: #1570ef;
-  margin-right: 0.4em;
-}
-a.show-likers {
-  text-decoration: underline;
-  cursor: pointer;
-}
-a.show-likers:hover {
-  color: #1570ef;
-}
-.btn-comment-toggle {
-  background: #f5f7fa;
-  color: #495869;
-  border: 1px solid #e0e6ef;
-}
-.btn-comment-toggle:hover {
-  background: #f0faff;
-  color: #1570ef;
-}
-</style>
+@section('content') 
 
 <div class="fb-feed-bg min-h-screen py-8">
   <div class="max-w-xl mx-auto">
